@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>격물치지 업데이트 정리</title>
+<style>
+:root {
+  --bg: #f7f6f2; --card: #ffffff; --ink: #1d1d1b; --ink-2: #5d5b55; --line: #e4e1d8;
+  --accent: #2743c4; --b2: #2f7d5b; --b3: #b25d12; --b4: #8a2fb5; --b5: #c0304f; --chip: #efede6;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #17171a; --card: #212126; --ink: #ecebe6; --ink-2: #a9a7a0; --line: #34343b; --accent: #8ea2ff; --b2: #6fcf9f; --b3: #f0a35c; --b4: #d39cf2; --b5: #ff8fa6; --chip: #2b2b31; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Pretendard", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.6; }
+.wrap { max-width: 920px; margin: 0 auto; padding: 32px 16px 64px; }
+header h1 { margin: 0 0 4px; font-size: 28px; letter-spacing: -0.02em; }
+header p { margin: 0; color: var(--ink-2); }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.stat b { display: block; font-size: 26px; letter-spacing: -0.02em; }
+.stat span { color: var(--ink-2); font-size: 13.5px; }
+.stat .up { color: var(--b2); font-size: 14px; font-weight: 600; }
+.timeline { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 24px; padding: 0; list-style: none; }
+.timeline li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; font-size: 13.5px; }
+.timeline li strong { margin-right: 6px; }
+.filter { position: sticky; top: 0; z-index: 2; display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 0; background: var(--bg); border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+.filter button { font: inherit; font-size: 14px; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
+.filter button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.filter .count { margin-left: auto; align-self: center; color: var(--ink-2); font-size: 13px; }
+h2 { font-size: 20px; margin: 32px 0 10px; letter-spacing: -0.01em; }
+h2 small { font-weight: 400; color: var(--ink-2); font-size: 14px; margin-left: 6px; }
+.items { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.items li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
+.items li[hidden] { display: none; }
+.tag { grid-row: span 2; align-self: start; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; white-space: nowrap; color: #fff; }
+.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tag { color: #111; } }
+.items b { font-size: 15.5px; }
+.items p { margin: 0; color: var(--ink-2); font-size: 14px; }
+.how { margin-top: 4px; font-size: 13.5px; color: var(--ink); background: var(--chip); border-radius: 6px; padding: 4px 8px; grid-column: 2; }
+.empty { color: var(--ink-2); font-size: 14px; }
+footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+@media (max-width: 520px) { header h1 { font-size: 23px; } .items li { grid-template-columns: 1fr; } .tag { grid-row: auto; justify-self: start; } .how { grid-column: 1; } }
+@media print { .filter { display: none; } body { background: #fff; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>격물치지 업데이트 정리</h1>
+    <p>베타테스트 1판(2026년 10월 14일)과 비교해 베타테스트 5판(10월 23일)까지 바뀐 점</p>
+  </header>
+
+  <section class="stats" aria-label="한눈에">
+    <div class="stat"><span>그림 틀 (합본)</span><b>12,642개</b><span class="up">베타 1판 5,092개 → +7,550개</span></div>
+    <div class="stat"><span>과목</span><b>+ 3 갈래</b><span>국어 · 영어 · 제2외국어 9개 언어</span></div>
+    <div class="stat"><span>격물판 · 치지판</span><b>4,869 · 7,920개</b><span>판마다 자기 과목 그림만</span></div>
+    <div class="stat"><span>베타 5 새 기능</span><b>학습지 · 탭 · AI 풀이</b><span>중국어·일본어 입력, 저작권 안내</span></div>
+  </section>
+
+  <ul class="timeline" aria-label="베타 판 흐름">
+    <li><strong>베타 1</strong>10월 14일 · 첫 공개</li>
+    <li><strong>베타 2</strong>10월 15일 · 국어·영어·제2외국어, 편집 다듬기</li>
+    <li><strong>베타 3</strong>10월 17일 · 그림 1만 2천 개, 묶기·돌리기·표 편집기</li>
+    <li><strong>베타 4</strong>10월 17일 · 그래프 자료 표, 증감표 그래프</li>
+    <li><strong>베타 5</strong>10월 23일 · 학습지 고도화, 작업 탭, 범례, 병음·로마자 입력, AI 풀이, 저작권 정리</li>
+  </ul>
+
+  <nav class="filter" aria-label="판 고르기">
+    <button type="button" data-v="all" aria-pressed="true">전체</button>
+    <button type="button" data-v="v2" aria-pressed="false">베타 2에서</button>
+    <button type="button" data-v="v3" aria-pressed="false">베타 3에서</button>
+    <button type="button" data-v="v4" aria-pressed="false">베타 4에서</button>
+    <button type="button" data-v="v5" aria-pressed="false">베타 5에서</button>
+    <span class="count" id="count"></span>
+  </nav>
+
+  <h2>새 과목 · 새 그림<small>무엇을 그릴 수 있게 됐나</small></h2>
+  <ul class="items">
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>범례 부품</b><p>그래프·지도 옆에 범례를 따로 놓아요. 열 수 · 줄바꿈 · 칸 크기 · 간격 · 기호(선 · 무늬 · 점)를 고르고, 기호 판에서 골라 넣어요. 그래프의 이름 붙은 곡선에서 범례를 바로 꺼낼 수도 있어요.</p><span class="how">그래프를 누름 → [범례 꺼내기], 또는 부품에서 범례</span></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>연표 다듬기</b><p>연도를 선 위 · 아래로, 연도-사건 간격 손잡이, 줄 위아래 옮기기, 사건 강조(굵게 · 동그라미 · 색), "1592~1598 임진왜란"처럼 쓰면 기간 막대, 세로 연표</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>확률 그림 다듬기</b><p>공 색 · 주사위 눈, 확률나무 가지 고치기와 [같은 가지로 한 단계 늘리기] · 확률 합 안내, 카드 · 동전도 표로, 주머니 이름 · 공 크기 · 카드 뒷면</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>사람 그림 다듬기</b><p>여러 사람 이름 한꺼번에, 이름 자리 위 · 왼쪽 · 끌어 옮기기, 자세 '대화하기' · 표정 '기본', 시선 방향, [이 모양을 다른 사람에게], 여러 명을 같은 간격 · 마주 보게 · 순서 거꾸로</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>치지 과목 순서</b><p>국어 · 영어 · 정치와 법 · 경제 · 사회문화 · 한국사 · 동아시아사/세계사 · 윤리 · 지리 순서, 제2외국어는 맨 뒤. 과목 메뉴에서 숫자 1~9로 바로 고르기</p></li>
+    <li data-v="v2"><span class="tag v2">베타 2</span><b>국어 · 영어 · 제2외국어(9개 언어) 과목</b><p>장면 만들기, 언어별 글자판 입력, 장면 복제. 틀 1,781개로 시작했어요.</p></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>수학 틀 1,000여 개 더</b><p>이산 그래프 · 쌓기나무 · 측량 · 바둑돌 수열, 함수 · 도형 · 통계 · 벡터 변형. 장면용 사물 40종도 더했어요.</p></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>과학 틀 840여 개 더</b><p>물리 · 화학 · 생명과학 · 지구과학 그래프와 실험 그림</p></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>사회 틀 877개 더</b><p>지도 · 그래프 · 도식 · 사료 · 연표 · 토론 · 두 시장 그림</p></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>국어 158 · 영어 213 · 제2외국어 960여 개 더</b><p>제2외국어는 수능 기출 조사(2005~2026)를 바탕으로 533개를 더 만들었어요.</p></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>수학 빠진 꼴 86개</b><p>증감표 · 조립제법 · 곱셈 표 · 대수 타일 · 행렬 · 중복조합 · 계단 블록 · 하노이 탑 · 코흐 눈송이 · 시에르핀스키 삼각형 · 스트링아트 · 외각 · 삼수선</p></li>
+    <li data-v="v2"><span class="tag v2">베타 2</span><b>지구과학 흑백 시험지 견본 6개</b><p>흑백 인쇄용으로 바꾼 그림의 예</p></li>
+  </ul>
+
+  <h2>학습지<small>시험지 · 답지를 한 번에</small></h2>
+  <ul class="items">
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>가로형 · 칸 너비 · 칸 높이</b><p>학습지를 가로로, 칸 너비를 단 수만큼, 높이를 절반 ~ 3배로. 칸 경계를 끌어 크기를 바꾸고 "모든 칸을 이 높이로"로 맞춰요. 넘치는 칸은 알려 줘요.</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>머리말 · 꼬리말 · 쪽 번호</b><p>학교 · 과목 · 쪽 번호 · {유형}을 쪽 위아래에. 첫 쪽만 빼기도 돼요. 인쇄 · 워드 · 한글 파일 모두 같아요.</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>문제지 + 답지 함께 받기</b><p>학생용 문제지와 교사용 답지를 한 번에(워드 · 한글 두 파일, 인쇄 두 번)</p><span class="how">학습지 위 막대 [문제지+답지 ▾]</span></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>배점 합계 · 고르게 나누기</b><p>제목 옆에 "5문항 · 총 96점". 100점이 아니면 알림(인쇄에는 안 나옴)과 [배점 고르게 나누기](0.5점 단위)</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>A형 · B형 만들기</b><p>문제 순서를 섞은 다른 유형을 목록에 만들어요. 객관식 보기 순서도 섞으면 정답 번호가 따라 바뀌어요. 제목 옆과 머리말 {유형}에 "B형"</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>빠른 정답표 · 이 칸부터 새 쪽 · 안내 글</b><p>답지 끝에 번호 · 정답 · 배점 표, 원하는 칸을 다음 쪽 맨 위에서 시작, 첫 쪽 제목 아래 시험 안내 상자(자주 쓰는 문장 단추)</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>AI 풀이 초안 (내 키)</b><p>칸의 [AI 풀이]: 보낼 내용(글 · 보기 · 그림)을 먼저 확인하고, 받은 풀이(핵심 개념 · 단계 · 답 · 확인할 점)를 고친 뒤 "확인했어요"를 골라야 풀이란에 들어가요. 풀 수 없는 문제는 답을 지어내지 않아요. 문제를 고치면 "다시 확인" 표시. [빈 풀이 모두 AI로]도 있어요.</p><span class="how">내 Claude · ChatGPT 키 필요 · 문제 하나에 약 20~60원(키 주인 계정)</span></li>
+  </ul>
+
+  <h2>새 기능<small>그림을 더 쉽게 고치게</small></h2>
+  <ul class="items">
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>화면 아래 작업 탭</b><p>그림 여러 개를 탭으로 열어 두고 오가요. 새 탭 · 이름 · 복제 · 닫기(되살리기) · 끌어 순서 바꾸기, 탭마다 따로 되돌리기. 모든 탭을 한 파일로 저장하고, 모든 탭을 PNG로 한꺼번에 받아요.</p><span class="how">Alt+1~9 탭 고르기 · Alt+N 새 탭 · Alt+W 닫기</span></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>내보내기 색칠 · 저장하면서 복사 · 출력 전 점검</b><p>내보낼 때 컬러 · 선화 · 회색을 골라요(원본 그림은 그대로). PNG를 받으면서 바로 복사해 한글에 붙이고, 내보내기 전에 작은 글자 · 잘림 · 겹침을 알려 줘요.</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>중국어 병음 · 일본어 로마자 입력</b><p>입력기를 깔지 않아도 돼요. nihao → 你好 후보, ni3 hao3 → nǐ hǎo 성조 표기, sensei → せんせい → 先生. 글자판 맨 위의 쓰기 칸이나 글자 칸에서 Ctrl+Space</p><span class="how">제2외국어 중국어 · 일본어 (치지판 · 합본)</span></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>표 다듬기</b><p>칸 합치기(Shift로 범위), 열 너비 · 줄 높이 · 열마다 정렬, 엑셀 · 한글 표를 복사해 붙이기, ↑↓로 칸 이동, 표 칸 Shift+Enter 줄바꿈</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>정렬 안내선 · 같은 간격 안내선</b><p>옮길 때 다른 것의 가장자리 · 가운데와 맞으면 선이 보이고 붙어요. 간격이 같아지는 자리도 알려 줘요.</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>속성 창 폭 끌기 · 입력칸 자동 높이</b><p>오른쪽 속성 창 가장자리를 끌어 넓히고, 긴 글을 쓰면 입력칸이 저절로 커져요.</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>두 번 눌러 바로 고치기 · 되돌리기 기록 목록</b><p>사람 이름 · 말풍선 · 자료 상자 제목을 두 번 눌러 바로 고쳐요. 되돌리기 단추에서 무엇을 되돌릴지 미리 보고, 목록에서 원하는 단계로 한 번에</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>보관함 폴더 · 여러 개 고르기 · 정렬</b><p>폴더 · 하위 폴더 · 끌어 옮기기 · ★ 즐겨찾기, 여러 개 골라 한꺼번에 옮기기 · 학습지에 담기 · 지우기(되돌리기), 담은 순 · 최근 고친 순 · 이름순. 보관함 그림을 새 탭에서 열기</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>흑백 시험지용 바꾸기 더 좋게</b><p>색 공은 빗금 · 점 · 격자 무늬로, 연표 빨간 강조는 굵게 — 색 없이도 구별</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>저작권 및 이용 안내</b><p>첫 화면과 도움말에 저작권 및 이용 안내와 쓴 공개 프로그램 부품 목록. 과학 시험지형 그래프에서 기출 문항 번호 · 시험지 주소를 뺐어요.</p></li>
+    <li data-v="v4"><span class="tag v4">베타 4</span><b>그래프 자료를 표로 고치기 (＋ 항목 · ＋ 계급 등)</b><p>원 · 띠 · 막대그래프, 히스토그램, 산점도, 연표, 세포 주기, 반응 양 표, 쌓기나무의 자료를 칸마다 고치고 줄을 더하거나 빼요. 히스토그램의 계급(50 ~ 60) 칸은 저절로 채워져요.</p><span class="how">그래프를 누름 → 오른쪽 속성 창의 표에서 칸을 누르고 ＋/－</span></li>
+    <li data-v="v4"><span class="tag v4">베타 4</span><b>증감표 [그래프 함께 놓기]</b><p>같은 식의 그래프와 극값 자리의 점선 · 눈금을 함께 그려요. 식을 바꾸면 그래프도 따라 바뀌어요.</p><span class="how">증감표를 누름 → 함수식으로 채우기 → [그래프 함께 놓기]</span></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>함수식으로 증감표 · 조립제법 채우기</b><p>식(예: x^3-12x)만 쓰면 x값 · 부호 · ↗↘ · 극대 · 극소가 채워져요. 극값을 (가) · (나) 빈칸으로 바꿀 수도 있어요. 조립제법은 몫 · 나머지도 알려 줘요.</p></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>표 편집기</b><p>표를 칸마다 고치고 ＋ 줄 · ＋ 칸 단추로 늘리고 줄여요. 확률분포표 · 도수분포표 같은 빠른 표 꼴도 단추 하나로 넣어요.</p></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>묶기 · 풀기, 맞추기 · 간격 같게</b><p>여러 개를 한 덩어리로 묶고(Ctrl+G), 왼쪽 · 가운데 · 위 · 아래 맞추기와 간격 같게</p></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>돌리기 (돌리기 손잡이)</b><p>사람 · 사물 · 표지판 · 자료 상자를 고르면 위에 생기는 파란 점을 끌어 돌려요. 15°마다 딱 맞춰져요.</p></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>연달아 놓기</b><p>고른 것을 같은 간격으로 여러 개 — 오른쪽 · 아래 · 바둑판으로</p></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>번호 붙이기</b><p>① · (1) · A · ㄱ · 가 번호를 윗줄부터 왼쪽→오른쪽 차례로, 그림과 묶어서</p></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>(가) 자동 빈칸</b><p>그림 속 글자를 (가) · (나) 같은 빈칸으로 바로 바꿔요.</p></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>찾기(Ctrl+K)에서 바로 하기 · 보관함</b><p>찾기 창에서 묶기 · 맞추기 · 표 넣기. 고른 것만 보관함에 담고, 보관함에서 [＋ 더하기]</p></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>화면 옮기기가 쉬워짐</b><p>빈 곳을 끌거나, 노트북 터치패드를 두 손가락으로 쓸어 화면을 옮겨요.</p></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>격물판 · 치지판 진짜로 나누기, 대문 따라 하기</b><p>판마다 자기 과목 그림만 들어 가볍고, 대문에 그림 수와 따라 하기 안내가 생겼어요.</p></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>사용 설명서</b><p>웹 전자책 · PDF · 워드 세 가지로</p></li>
+    <li data-v="v2"><span class="tag v2">베타 2</span><b>8방향 크기 손잡이</b><p>부품 · 말풍선 · 사람 · 자료 곡선의 둘레 손잡이를 끌어 크기를 바꿔요(Shift는 비율 그대로).</p></li>
+    <li data-v="v2"><span class="tag v2">베타 2</span><b>흑백 시험지용으로 바꾸기</b><p>컬러 부품까지 흑백으로, 비슷한 회색은 빗금 · 점 무늬로, 색으로 구별하던 선은 파선 · 점선으로. Ctrl+Z 한 번이면 원래대로</p></li>
+    <li data-v="v2"><span class="tag v2">베타 2</span><b>음영 · 무늬</b><p>자료 상자 · 말풍선 바탕에 회색 10 · 20 · 35%, 빗금 · 격자 · 점. 곡선 아래 음영 넣기</p></li>
+    <li data-v="v2"><span class="tag v2">베타 2</span><b>자료 곡선을 함수식으로 바꾸기</b><p>오른쪽 클릭 [함수식으로 바꾸기], 식 곡선도 옮기고 크기 조절</p></li>
+    <li data-v="v2"><span class="tag v2">베타 2</span><b>말풍선 다듬기</b><p>글 길이에 맞춰 폭이 저절로, 꼬리가 몸통과 한 덩어리, 꼬리 끝을 다른 사람 머리에 놓으면 그 사람이 말하게, 외침은 톱니 모양</p></li>
+    <li data-v="v2"><span class="tag v2">베타 2</span><b>내보낼 영역 밖을 회색으로 가려 보이기</b><p>그림으로 저장될 부분이 어디까지인지 편집 화면에서 바로 보여요.</p></li>
+    <li data-v="v2"><span class="tag v2">베타 2</span><b>변수 창 폭 조절 · AI 모델 고르기</b><p>변수 창 가장자리를 끌어 넓히고, AI 그림 만들기에서 쓸 모델을 목록에서 골라요.</p></li>
+    <li data-v="v2"><span class="tag v2">베타 2</span><b>의견 보내기</b><p>베타판 안내 창 · 의견 창에서 의견 받을 주소를 복사할 수 있어요.</p></li>
+  </ul>
+
+  <h2>고친 문제<small>베타 1판에서 불편했던 것</small></h2>
+  <ul class="items">
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>도식 상자를 지우면 연결선이 남던 문제</b><p>상자를 지우면 붙은 연결선도 함께 지울지 알려 줘요. 화살표 시작 · 끝도 바꿀 수 있어요.</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>학습지 칸 끌어 순서 바꾸기가 가끔 취소되던 문제</b><p>끄는 도중에 화면을 다시 그리지 않게 고쳤어요.</p></li>
+    <li data-v="v5"><span class="tag v5">베타 5</span><b>예시 글의 실제 책 제목</b><p>국어 예시에 나오던 실제 책 제목을 지어낸 제목으로 바꿨어요.</p></li>
+    <li data-v="v2"><span class="tag v2">베타 2</span><b>왼쪽에서 고른 자료가 그림판 가운데에 겹쳐 쌓이던 문제</b><p>좌표축이 따로 있는 그래프 · 애니메이션은 새 그림으로 열려요(Ctrl+Z 한 번에 이전 그림).</p></li>
+    <li data-v="v2"><span class="tag v2">베타 2</span><b>애니메이션 틀을 여러 개 넣으면 변수가 꼬이던 문제</b><p>겹치는 변수 이름을 저절로 바꿔요.</p></li>
+    <li data-v="v2"><span class="tag v2">베타 2</span><b>변수 값 자릿수</b><p>움직이는 그림에서는 0.60처럼 끝자리 0을 지키고, 학습지 글에서는 1.0 → 1로 써요.</p></li>
+    <li data-v="v2"><span class="tag v2">베타 2</span><b>일시정지(⏸) 단추가 투명하게 보이던 문제</b><p>이제 막대 두 개 모양으로 또렷하게 보여요.</p></li>
+    <li data-v="v2"><span class="tag v2">베타 2</span><b>마우스 모양</b><p>크기 손잡이는 방향 화살표, 물체 위는 손바닥, 옮기는 중은 쥔 손</p></li>
+    <li data-v="v3"><span class="tag v3">베타 3</span><b>안내 카드 닫기 · 의견 보내기 다듬기</b><p>첫 화면 안내 카드를 닫을 수 있고, 의견 보내는 길이 더 짧아졌어요.</p></li>
+  </ul>
+  <p class="empty" id="none" hidden>이 판에서 바뀐 것이 이 갈래에는 없어요.</p>
+
+  <footer>
+    파일: 격물 베타테스트 5.html · 치지 베타테스트 5.html · 격물치지(합본) 베타테스트 5.html — 온라인판 https://runedaeg.github.io/gyeokmulchiji/<br>
+    알려진 문제: 중국어 그림에서 你 같은 일부 간체자가 다른 글꼴로 보여요(다음 판에서 고칠 예정).<br>
+    제작: 김홍겸(고천중) · 여광재(온양고) · 정리일 2026년 10월 23일
+  </footer>
+</div>
+<script>
+(function () {
+  var btns = document.querySelectorAll('.filter button'), items = document.querySelectorAll('.items li'), count = document.getElementById('count');
+  function show(v) {
+    var n = 0;
+    btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.v === v)); });
+    items.forEach(function (li) { var on = v === 'all' || li.dataset.v === v; li.hidden = !on; if (on) n++; });
+    document.querySelectorAll('.items').forEach(function (ul) {
+      var any = Array.prototype.some.call(ul.children, function (li) { return !li.hidden; });
+      ul.hidden = !any; ul.previousElementSibling.hidden = !any;
+    });
+    count.textContent = n + '가지';
+    try { localStorage.setItem('gmcj-log-v', v); } catch (e) {}
+  }
+  btns.forEach(function (b) { b.addEventListener('click', function () { show(b.dataset.v); }); });
+  var saved = 'all'; try { saved = localStorage.getItem('gmcj-log-v') || 'all'; } catch (e) {}
+  show(saved);
+})();
+</script>
+</body>
+</html>
