@@ -7,10 +7,10 @@
 <style>
 :root {
   --bg: #f7f6f2; --card: #ffffff; --ink: #1d1d1b; --ink-2: #5d5b55; --line: #e4e1d8;
-  --accent: #2743c4; --b2: #2f7d5b; --b3: #b25d12; --b4: #8a2fb5; --b5: #c0304f; --b6: #0f7c8c; --b7: #6b5a00; --chip: #efede6;
+  --accent: #2743c4; --b2: #2f7d5b; --b3: #b25d12; --b4: #8a2fb5; --b5: #c0304f; --b6: #0f7c8c; --b7: #6b5a00; --b8: #3a5f1a; --chip: #efede6;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --bg: #17171a; --card: #212126; --ink: #ecebe6; --ink-2: #a9a7a0; --line: #34343b; --accent: #8ea2ff; --b2: #6fcf9f; --b3: #f0a35c; --b4: #d39cf2; --b5: #ff8fa6; --b6: #5fd3e3; --b7: #e3c64a; --chip: #2b2b31; }
+  :root:not([data-theme="light"]) { --bg: #17171a; --card: #212126; --ink: #ecebe6; --ink-2: #a9a7a0; --line: #34343b; --accent: #8ea2ff; --b2: #6fcf9f; --b3: #f0a35c; --b4: #d39cf2; --b5: #ff8fa6; --b6: #5fd3e3; --b7: #e3c64a; --b8: #9fd36b; --chip: #2b2b31; }
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Pretendard", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.6; }
@@ -35,7 +35,7 @@ h2 small { font-weight: 400; color: var(--ink-2); font-size: 14px; margin-left: 
 .items li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
 .items li[hidden] { display: none; }
 .tag { grid-row: span 2; align-self: start; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; white-space: nowrap; color: #fff; }
-.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); } .tag.v6 { background: var(--b6); } .tag.v7 { background: var(--b7); }
+.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); } .tag.v6 { background: var(--b6); } .tag.v7 { background: var(--b7); } .tag.v8 { background: var(--b8); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tag { color: #111; } }
 .items b { font-size: 15.5px; }
 .items p { margin: 0; color: var(--ink-2); font-size: 14px; }
@@ -50,7 +50,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
 <div class="wrap">
   <header>
     <h1>격물치지 업데이트 정리</h1>
-    <p>베타테스트 1판(2026년 10월 14일)과 비교해 베타테스트 7판(10월 28일)까지 바뀐 점</p>
+    <p>베타테스트 1판(2026년 10월 14일)과 비교해 베타테스트 8판(10월 28일)까지 바뀐 점</p>
   </header>
 
   <section class="stats" aria-label="한눈에">
@@ -68,6 +68,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <li><strong>베타 5</strong>10월 23일 · 학습지 고도화, 작업 탭, 범례, 병음·로마자 입력, AI 풀이, 저작권 정리</li>
     <li><strong>베타 6</strong>10월 23일 · 중국어 그림 글꼴, 학생용 쉬운 말 풀이</li>
     <li><strong>베타 7</strong>10월 28일 · 수식 모양 고르기·한글 수식 글꼴·내 스튜디오</li>
+    <li><strong>베타 8</strong>10월 28일 · 한글 수식 글꼴을 한글 수식 편집기 모양 그대로</li>
   </ul>
 
   <nav class="filter" aria-label="판 고르기">
@@ -78,6 +79,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <button type="button" data-v="v5" aria-pressed="false">베타 5에서</button>
     <button type="button" data-v="v6" aria-pressed="false">베타 6에서</button>
     <button type="button" data-v="v7" aria-pressed="false">베타 7에서</button>
+    <button type="button" data-v="v8" aria-pressed="false">베타 8에서</button>
     <span class="count" id="count"></span>
   </nav>
 
@@ -150,6 +152,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
 
   <h2>고친 문제<small>베타 1판에서 불편했던 것</small></h2>
   <ul class="items">
+    <li data-v="v8"><span class="tag v8">베타 8</span><b>한글 수식 글꼴인데 한글 수식 편집기와 모양이 다르던 문제</b><p>한글 수식 편집기는 HyhwpEQ·HancomEQN 글꼴 안의 수식 전용 글자(진짜 수학 기울임체 x·k·n, 수식용 숫자·괄호, 큰 Σ·∫)를 써요. 앱도 이제 같은 글자를 써서 한글에서 만든 수식과 같은 모양이에요. 글꼴이 없는 컴퓨터와 학생용 웹페이지는 명조로 보여요.</p></li>
     <li data-v="v7"><span class="tag v7">베타 7</span><b>AI 풀이 [학생용으로 쉽게]에서 수식이 깨지던 문제</b><p>실제 ChatGPT로 시험해 찾았어요. 수식 기호가 깨지지 않게 하고, 원래 풀이에 없던 수식이 생기면 경고해요.</p></li>
     <li data-v="v6"><span class="tag v6">베타 6</span><b>중국어 그림에서 你 같은 글자만 굵게 보이던 문제</b><p>한국어 글꼴에 없는 간체자와 일본 한자도 이제 다른 글자와 같은 명조(고딕이면 고딕)로 보여요. 중국어 공개 글꼴은 한자가 든 그림에서만 받고, 인터넷이 없으면 윈도우의 중국어 글꼴로 그려요. 학생용 웹페이지 · SVG에도 같은 글꼴이 들어가요.</p></li>
     <li data-v="v5"><span class="tag v5">베타 5</span><b>도식 상자를 지우면 연결선이 남던 문제</b><p>상자를 지우면 붙은 연결선도 함께 지울지 알려 줘요. 화살표 시작 · 끝도 바꿀 수 있어요.</p></li>
@@ -165,7 +168,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
   <p class="empty" id="none" hidden>이 판에서 바뀐 것이 이 갈래에는 없어요.</p>
 
   <footer>
-    파일: 격물 베타테스트 7.html · 치지 베타테스트 7.html · 격물치지(합본) 베타테스트 7.html — 온라인판 https://runedaeg.github.io/gyeokmulchiji/<br>
+    파일: 격물 베타테스트 8.html · 치지 베타테스트 8.html · 격물치지(합본) 베타테스트 8.html — 온라인판 https://runedaeg.github.io/gyeokmulchiji/<br>
     제작: 김홍겸(고천중) · 여광재(온양고) · 정리일 2026년 10월 28일
   </footer>
 </div>
