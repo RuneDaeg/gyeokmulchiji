@@ -7,10 +7,10 @@
 <style>
 :root {
   --bg: #f7f6f2; --card: #ffffff; --ink: #1d1d1b; --ink-2: #5d5b55; --line: #e4e1d8;
-  --accent: #2743c4; --b2: #2f7d5b; --b3: #b25d12; --b4: #8a2fb5; --b5: #c0304f; --b6: #0f7c8c; --chip: #efede6;
+  --accent: #2743c4; --b2: #2f7d5b; --b3: #b25d12; --b4: #8a2fb5; --b5: #c0304f; --b6: #0f7c8c; --b7: #6b5a00; --chip: #efede6;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --bg: #17171a; --card: #212126; --ink: #ecebe6; --ink-2: #a9a7a0; --line: #34343b; --accent: #8ea2ff; --b2: #6fcf9f; --b3: #f0a35c; --b4: #d39cf2; --b5: #ff8fa6; --b6: #5fd3e3; --chip: #2b2b31; }
+  :root:not([data-theme="light"]) { --bg: #17171a; --card: #212126; --ink: #ecebe6; --ink-2: #a9a7a0; --line: #34343b; --accent: #8ea2ff; --b2: #6fcf9f; --b3: #f0a35c; --b4: #d39cf2; --b5: #ff8fa6; --b6: #5fd3e3; --b7: #e3c64a; --chip: #2b2b31; }
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Pretendard", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; line-height: 1.6; }
@@ -35,7 +35,7 @@ h2 small { font-weight: 400; color: var(--ink-2); font-size: 14px; margin-left: 
 .items li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
 .items li[hidden] { display: none; }
 .tag { grid-row: span 2; align-self: start; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; white-space: nowrap; color: #fff; }
-.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); } .tag.v6 { background: var(--b6); }
+.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); } .tag.v6 { background: var(--b6); } .tag.v7 { background: var(--b7); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tag { color: #111; } }
 .items b { font-size: 15.5px; }
 .items p { margin: 0; color: var(--ink-2); font-size: 14px; }
@@ -50,7 +50,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
 <div class="wrap">
   <header>
     <h1>격물치지 업데이트 정리</h1>
-    <p>베타테스트 1판(2026년 10월 14일)과 비교해 베타테스트 6판(10월 23일)까지 바뀐 점</p>
+    <p>베타테스트 1판(2026년 10월 14일)과 비교해 베타테스트 7판(10월 28일)까지 바뀐 점</p>
   </header>
 
   <section class="stats" aria-label="한눈에">
@@ -67,6 +67,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <li><strong>베타 4</strong>10월 17일 · 그래프 자료 표, 증감표 그래프</li>
     <li><strong>베타 5</strong>10월 23일 · 학습지 고도화, 작업 탭, 범례, 병음·로마자 입력, AI 풀이, 저작권 정리</li>
     <li><strong>베타 6</strong>10월 23일 · 중국어 그림 글꼴, 학생용 쉬운 말 풀이</li>
+    <li><strong>베타 7</strong>10월 28일 · 수식 모양 고르기·한글 수식 글꼴·내 스튜디오</li>
   </ul>
 
   <nav class="filter" aria-label="판 고르기">
@@ -76,6 +77,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <button type="button" data-v="v4" aria-pressed="false">베타 4에서</button>
     <button type="button" data-v="v5" aria-pressed="false">베타 5에서</button>
     <button type="button" data-v="v6" aria-pressed="false">베타 6에서</button>
+    <button type="button" data-v="v7" aria-pressed="false">베타 7에서</button>
     <span class="count" id="count"></span>
   </nav>
 
@@ -109,6 +111,10 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
 
   <h2>새 기능<small>그림을 더 쉽게 고치게</small></h2>
   <ul class="items">
+    <li data-v="v7"><span class="tag v7">베타 7</span><b>수식 모양 고르기 (한글 수식 편집기처럼)</b><p>[수식 도우미] 맨 앞 [모양]에서 분수·루트·첨자·적분·시그마·극한·행렬(크기 고르기)·행렬식·연립·구간별 함수·조합·이항계수·선분·호·벡터·여러 줄 맞춤·화살표 위 글자·연분수 등 37가지를 그림 단추로 골라요. 빈칸(□)을 Tab으로 오가며 채우고, 안에는 LaTeX로 저장돼요.</p><span class="how">글자 칸 옆 [수식 도우미] → [모양]</span></li>
+    <li data-v="v7"><span class="tag v7">베타 7</span><b>한글 수식 글 ↔ LaTeX</b><p>한글 수식 편집기의 글({a} over {b}, sqrt {x}, LEFT ( RIGHT ), matrix {…})을 붙이면 저절로 수식이 되고, [한글 수식으로 복사]로 반대로 한글 수식 편집기에 붙일 글을 복사해요. 자주 쓰는 수식은 ★로 [내 수식]에 담아요.</p></li>
+    <li data-v="v7"><span class="tag v7">베타 7</span><b>한글 수식 글꼴 (HyhwpEQ · HancomEQN)</b><p>그림 설정 › 글꼴에 [한글 수식]·[한컴 수식], 프리셋 [한글 문서](10pt). 한글로 내보낸 그림도 같은 글꼴. [새 그림·학습지 수식도 이 글꼴로]를 고르면 새 그림과 학습지 글 수식에도 적용돼요. 한글이 깔린 컴퓨터에서만 이 모양이에요(한컴 글꼴이라 앱에 넣을 수 없음).</p></li>
+    <li data-v="v7"><span class="tag v7">베타 7</span><b>내 스튜디오 — 내 컴퓨터 폴더에 그림 파일로</b><p>보관함 칸의 [내 스튜디오]에서 폴더를 한 번 고르면 그림·학습지를 파일로 저장하고 열어요. 연 그림은 고치면 저절로 저장되고 이전 판 10개가 남아 되돌릴 수 있어요. PNG도 함께 저장, 태그·메모·정렬·여러 개 골라 폴더로 옮기기, 지우기는 휴지통 폴더로. 학습지 칸에도 스튜디오 그림을 바로 넣어요.</p><span class="how">크롬·엣지로 연 사이트·설치판에서 (받은 HTML 파일에서는 막힐 수 있어요)</span></li>
     <li data-v="v5"><span class="tag v5">베타 5</span><b>화면 아래 작업 탭</b><p>그림 여러 개를 탭으로 열어 두고 오가요. 새 탭 · 이름 · 복제 · 닫기(되살리기) · 끌어 순서 바꾸기, 탭마다 따로 되돌리기. 모든 탭을 한 파일로 저장하고, 모든 탭을 PNG로 한꺼번에 받아요.</p><span class="how">Alt+1~9 탭 고르기 · Alt+N 새 탭 · Alt+W 닫기</span></li>
     <li data-v="v5"><span class="tag v5">베타 5</span><b>내보내기 색칠 · 저장하면서 복사 · 출력 전 점검</b><p>내보낼 때 컬러 · 선화 · 회색을 골라요(원본 그림은 그대로). PNG를 받으면서 바로 복사해 한글에 붙이고, 내보내기 전에 작은 글자 · 잘림 · 겹침을 알려 줘요.</p></li>
     <li data-v="v5"><span class="tag v5">베타 5</span><b>중국어 병음 · 일본어 로마자 입력</b><p>입력기를 깔지 않아도 돼요. nihao → 你好 후보, ni3 hao3 → nǐ hǎo 성조 표기, sensei → せんせい → 先生. 글자판 맨 위의 쓰기 칸이나 글자 칸에서 Ctrl+Space</p><span class="how">제2외국어 중국어 · 일본어 (치지판 · 합본)</span></li>
@@ -144,6 +150,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
 
   <h2>고친 문제<small>베타 1판에서 불편했던 것</small></h2>
   <ul class="items">
+    <li data-v="v7"><span class="tag v7">베타 7</span><b>AI 풀이 [학생용으로 쉽게]에서 수식이 깨지던 문제</b><p>실제 ChatGPT로 시험해 찾았어요. 수식 기호가 깨지지 않게 하고, 원래 풀이에 없던 수식이 생기면 경고해요.</p></li>
     <li data-v="v6"><span class="tag v6">베타 6</span><b>중국어 그림에서 你 같은 글자만 굵게 보이던 문제</b><p>한국어 글꼴에 없는 간체자와 일본 한자도 이제 다른 글자와 같은 명조(고딕이면 고딕)로 보여요. 중국어 공개 글꼴은 한자가 든 그림에서만 받고, 인터넷이 없으면 윈도우의 중국어 글꼴로 그려요. 학생용 웹페이지 · SVG에도 같은 글꼴이 들어가요.</p></li>
     <li data-v="v5"><span class="tag v5">베타 5</span><b>도식 상자를 지우면 연결선이 남던 문제</b><p>상자를 지우면 붙은 연결선도 함께 지울지 알려 줘요. 화살표 시작 · 끝도 바꿀 수 있어요.</p></li>
     <li data-v="v5"><span class="tag v5">베타 5</span><b>학습지 칸 끌어 순서 바꾸기가 가끔 취소되던 문제</b><p>끄는 도중에 화면을 다시 그리지 않게 고쳤어요.</p></li>
@@ -158,8 +165,8 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
   <p class="empty" id="none" hidden>이 판에서 바뀐 것이 이 갈래에는 없어요.</p>
 
   <footer>
-    파일: 격물 베타테스트 6.html · 치지 베타테스트 6.html · 격물치지(합본) 베타테스트 6.html — 온라인판 https://runedaeg.github.io/gyeokmulchiji/<br>
-    제작: 김홍겸(고천중) · 여광재(온양고) · 정리일 2026년 10월 23일
+    파일: 격물 베타테스트 7.html · 치지 베타테스트 7.html · 격물치지(합본) 베타테스트 7.html — 온라인판 https://runedaeg.github.io/gyeokmulchiji/<br>
+    제작: 김홍겸(고천중) · 여광재(온양고) · 정리일 2026년 10월 28일
   </footer>
 </div>
 <script>
