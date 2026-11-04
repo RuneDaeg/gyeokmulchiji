@@ -25,6 +25,9 @@ jobs:
         run: npx electron-builder --mac --arm64 --x64 --publish never -c.directories.output=release
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      - name: 서명 확인 (임시 서명 — 애플 칩 맥은 서명이 없으면 "손상됨"으로 막는다)
+        run: |
+          for a in app-src/release/mac-arm64/*.app app-src/release/mac/*.app; do codesign -dv "$a" 2>&1 | grep -E 'Signature|Identifier|Format' ; codesign --verify --deep --strict "$a" && echo "서명 바름: $a"; done
       - name: 크기 확인 (100MB 미만)
         run: |
           ls -la app-src/release

@@ -43,7 +43,7 @@
       "language": "1042"
     },
     "portable": { "artifactName": "Gyeokmulchiji-Portable.${ext}" },
-    "mac": { "target": [{ "target": "zip", "arch": ["arm64", "x64"] }], "icon": "build/icon.png", "category": "public.app-category.education", "identity": null, "artifactName": "Gyeokmulchiji-Mac-${arch}.${ext}" },
+    "mac": { "target": [{ "target": "zip", "arch": ["arm64", "x64"] }], "icon": "build/icon.png", "category": "public.app-category.education", "identity": "-", "hardenedRuntime": false, "gatekeeperAssess": false, "artifactName": "Gyeokmulchiji-Mac-${arch}.${ext}" },
     "dmg": { "title": "격물치지 ${version}" },
     "publish": [{ "provider": "generic", "url": "https://draw.mathmckay.kr/download" }]
   }
