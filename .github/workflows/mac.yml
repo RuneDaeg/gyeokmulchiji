@@ -11,7 +11,7 @@ concurrency:
   group: mac-build
 jobs:
   mac:
-    runs-on: macos-14 # macos-latest가 20분 넘게 기다리기만 해서 (2026-11-05)
+    runs-on: macos-15-intel # 애플 칩 맥은 GitHub 자리가 모자라 받지 못함(2026-11-05) — 인텔 맥에서 두 칩용을 함께 만든다
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
