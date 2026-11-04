@@ -11,7 +11,7 @@ concurrency:
   group: mac-build
 jobs:
   mac:
-    runs-on: macos-latest
+    runs-on: macos-14 # macos-latest가 20분 넘게 기다리기만 해서 (2026-11-05)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
