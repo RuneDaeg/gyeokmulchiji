@@ -38,6 +38,7 @@ h2{font-size:21px;margin:8px 0 14px}
 .card .what{margin:0;color:var(--sub);font-size:14px}
 .btn{display:inline-block;text-align:center;text-decoration:none;border:1px solid var(--ink);border-radius:8px;padding:8px 12px;font-weight:bold;font-size:15px}
 .btn.p{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.soon{border-style:dashed;color:var(--sub);font-weight:normal;cursor:default}
 .note{margin:2px 0 0;font-size:13px;color:var(--sub)}
 .note b{color:var(--ink)}
 .qr{width:120px;height:120px;margin:6px auto 0;background:#fff;padding:4px;border-radius:6px}
@@ -115,7 +116,7 @@ footer{color:var(--sub);font-size:13px;text-align:center;padding:20px 16px 40px;
     <p>쓰시는 컴퓨터·휴대폰 안에만 저장돼요. 격물치지는 그림·학습지를 어디로도 보내지 않아요. 다른 기기로 옮길 때는 백업 파일을 쓰세요.</p>
   </details>
 </main>
-<footer>격물치지 1.0.0 · 무료 · 가입 없음 · 그림은 쓰는 기기에만 저장돼요</footer>
+<footer><a href="/guide/">사용 설명서</a> · <a href="/guide/gyeokmulchiji-manual.pdf">PDF</a> · <a href="/updates.html">업데이트 정리</a><br>격물치지 1.0.0 · 무료 · 가입 없음 · 그림은 쓰는 기기에만 저장돼요</footer>
 <script>
 // 이 기기에 맞는 칸을 먼저 (윈도우·맥·안드로이드·아이폰)
 (function () {
@@ -125,6 +126,12 @@ footer{color:var(--sub);font-size:13px;text-align:center;padding:20px 16px 40px;
   var sk = document.getElementById('skip');
   try { sk.checked = localStorage.getItem('jakdo:landSkip') === 'true'; } catch (e) {}
   sk.addEventListener('change', function () { try { localStorage.setItem('jakdo:landSkip', sk.checked ? 'true' : 'false'); } catch (e) {} });
+  // 아직 올라오지 않은 파일(맥 앱 등)은 받기 단추 대신 "준비 중" (파일이 생기면 저절로 단추가 보인다)
+  if (location.protocol.indexOf('http') === 0 && window.fetch) document.querySelectorAll('.card a.btn[href*="/download/"]').forEach(function (a) {
+    fetch(a.href, { method: 'HEAD', cache: 'no-store' }).then(function (r) { if (!r.ok) throw 0; }).catch(function () {
+      var s = document.createElement('span'); s.className = 'btn soon'; s.textContent = a.textContent.replace(/받기.*/, '') + '— 준비 중이에요'; a.replaceWith(s);
+    });
+  });
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(function () {});
 })();
 </script>
