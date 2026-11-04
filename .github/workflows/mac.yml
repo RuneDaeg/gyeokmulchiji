@@ -1,0 +1,41 @@
+# 맥 앱 만들기 (격물치지 3차 조각 1-⑤, 2026-11-05) — 사이트 저장소 RuneDaeg/gyeokmulchiji 의 .github/workflows/mac.yml
+# GitHub가 빌려주는 맥 컴퓨터에서 app-src 를 dmg 두 개(애플 칩 arm64 · 인텔 x64)로 만들어 download/ 에 넣고 올린다
+# → https://draw.mathmckay.kr/download/Gyeokmulchiji-Mac-arm64.dmg · …-x64.dmg  (파일 하나 100MB 제한이라 둘로 나눔)
+# 서명 없음 (애플 개발자 등록 없음) — 처음 열 때 오른쪽 클릭 → 열기
+name: 맥 앱 만들기
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: mac-build
+jobs:
+  mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: 부품 설치
+        working-directory: app-src
+        run: npm ci
+      - name: dmg 만들기 (애플 칩·인텔)
+        working-directory: app-src
+        run: npx electron-builder --mac --arm64 --x64 --publish never -c.directories.output=release
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      - name: 크기 확인 (100MB 미만)
+        run: |
+          ls -la app-src/release
+          for f in app-src/release/Gyeokmulchiji-Mac-arm64.dmg app-src/release/Gyeokmulchiji-Mac-x64.dmg; do
+            s=$(stat -f%z "$f"); echo "$f $s"; if [ "$s" -ge 104857600 ]; then echo "100MB를 넘어요: $f"; exit 1; fi
+          done
+      - name: download/ 에 넣고 올리기
+        run: |
+          cp app-src/release/Gyeokmulchiji-Mac-arm64.dmg app-src/release/Gyeokmulchiji-Mac-x64.dmg download/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add download/Gyeokmulchiji-Mac-arm64.dmg download/Gyeokmulchiji-Mac-x64.dmg
+          git commit -m "맥 앱 $(node -p "require('./app-src/package.json').version")" || echo "바뀐 것 없음"
+          git push

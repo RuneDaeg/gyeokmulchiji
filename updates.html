@@ -35,7 +35,7 @@ h2 small { font-weight: 400; color: var(--ink-2); font-size: 14px; margin-left: 
 .items li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
 .items li[hidden] { display: none; }
 .tag { grid-row: span 2; align-self: start; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; white-space: nowrap; color: #fff; }
-.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); } .tag.v6 { background: var(--b6); } .tag.v7 { background: var(--b7); } .tag.v8 { background: var(--b8); }
+.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); } .tag.v6 { background: var(--b6); } .tag.v7 { background: var(--b7); } .tag.v8 { background: var(--b8); } .tag.v10 { background: #c8321f; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tag { color: #111; } }
 .items b { font-size: 15.5px; }
 .items p { margin: 0; color: var(--ink-2); font-size: 14px; }
@@ -50,7 +50,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
 <div class="wrap">
   <header>
     <h1>격물치지 업데이트 정리</h1>
-    <p>베타테스트 1판(2026년 10월 14일)과 비교해 베타테스트 8판(10월 28일)까지 바뀐 점</p>
+    <p>베타테스트 1판(2026년 10월 14일)부터 정식판 1.0(11월 5일)까지 바뀐 점</p>
   </header>
 
   <section class="stats" aria-label="한눈에">
@@ -69,6 +69,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <li><strong>베타 6</strong>10월 23일 · 중국어 그림 글꼴, 학생용 쉬운 말 풀이</li>
     <li><strong>베타 7</strong>10월 28일 · 수식 모양 고르기·한글 수식 글꼴·내 스튜디오</li>
     <li><strong>베타 8</strong>10월 28일 · 한글 수식 글꼴을 한글 수식 편집기 모양 그대로</li>
+    <li><strong>정식판 1.0</strong>11월 5일 · 새 주소 draw.mathmckay.kr, 윈도우·맥·안드로이드 앱, 새 판 저절로 받기</li>
   </ul>
 
   <nav class="filter" aria-label="판 고르기">
@@ -80,8 +81,19 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <button type="button" data-v="v6" aria-pressed="false">베타 6에서</button>
     <button type="button" data-v="v7" aria-pressed="false">베타 7에서</button>
     <button type="button" data-v="v8" aria-pressed="false">베타 8에서</button>
+    <button type="button" data-v="v10" aria-pressed="false">1.0에서</button>
     <span class="count" id="count"></span>
   </nav>
+
+  <h2>정식판 1.0<small>11월 5일 · 베타 8 다음에 더한 것</small></h2>
+  <ul class="items">
+    <li data-v="v10"><span class="tag v10">1.0</span><b>새 주소 draw.mathmckay.kr · 앱 받기</b><p>첫 화면에서 윈도우(설치판·바로실행판) · 맥(애플 칩·인텔) · 안드로이드 앱을 받아요. 아이폰은 홈 화면에 추가. 그림판은 [웹에서 바로 쓰기].</p></li>
+    <li data-v="v10"><span class="tag v10">1.0</span><b>새 판 저절로 받기</b><p>앱은 새 판을 뒤에서 받아 다음에 켤 때 적용, 내려받은 HTML 파일은 띠의 [새 판으로 바꾸기]로 덮어쓰기. 사용법 칸 [새 판 확인하기].</p></li>
+    <li data-v="v10"><span class="tag v10">1.0</span><b>이름: 격물치지 — 전과목 교과용 그림 그리기</b><p>창 제목과 위쪽 로고가 늘 格物致知. 베타 표시를 걷고 판 번호(1.0.0)를 달았어요.</p></li>
+    <li data-v="v10"><span class="tag v10">1.0</span><b>오류 안전망 · 깨진 저장 되살리기</b><p>예상 못 한 오류가 나도 멈추지 않고 알려 주고, 바로 전 그림을 남겨 둬요. 저장이 깨지면 앞 판으로 되살려요.</p></li>
+    <li data-v="v10"><span class="tag v10">1.0</span><b>무엇이든 찾기 (Ctrl+K)</b><p>그림 틀 · 보관함 · 학습지 · 내 수식 · 스튜디오 파일 · 명령을 한 칸에서 찾아요.</p></li>
+    <li data-v="v10"><span class="tag v10">1.0</span><b>따라하기 네 갈래 · 단축키 한 장 표 (?)</b><p>기본 · 학습지 · 수식 · 스튜디오 따라하기, 단축키는 ? 한 번에 한 장(A4 인쇄).</p></li>
+  </ul>
 
   <h2>새 과목 · 새 그림<small>무엇을 그릴 수 있게 됐나</small></h2>
   <ul class="items">
