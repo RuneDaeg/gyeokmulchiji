@@ -22,6 +22,8 @@
     "appId": "kr.mathmckay.gyeokmulchiji",
     "productName": "격물치지",
     "executableName": "Gyeokmulchiji",
+    "electronLanguages": ["ko", "en", "en-US"],
+    "compression": "maximum",
     "copyright": "McKay",
     "directories": { "output": "C:/dev/gyeokmulchiji-release", "buildResources": "build" },
     "files": ["electron/**", "app/**", "build/icon.png", "package.json"],
