@@ -85,10 +85,7 @@
       "icon": "build/icon.png",
       "category": "public.app-category.education",
       "identity": null,
-      "artifactName": "Gyeokmulchiji-Mac-${arch}.${ext}",
-      "files": [
-        "!app/격물치지-사용설명서.html"
-      ]
+      "artifactName": "Gyeokmulchiji-Mac-${arch}.${ext}"
     },
     "dmg": {
       "title": "격물치지 ${version}"

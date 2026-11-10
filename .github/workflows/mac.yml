@@ -20,6 +20,8 @@ jobs:
       - name: 부품 설치
         working-directory: app-src
         run: npm ci
+      - name: 사용 설명서 빼기 (100MB 제한 — 맥 앱은 사이트 /guide/ 를 연다, 2026-11-11)
+        run: find app-src/app -name "*.html" ! -name index.html -print -delete
       - name: zip 만들기 (애플 칩·인텔)
         working-directory: app-src
         run: npx electron-builder --mac --arm64 --x64 --publish never -c.directories.output=release
