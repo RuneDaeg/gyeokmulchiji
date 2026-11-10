@@ -84,9 +84,7 @@
       ],
       "icon": "build/icon.png",
       "category": "public.app-category.education",
-      "identity": "-",
-      "hardenedRuntime": false,
-      "gatekeeperAssess": false,
+      "identity": null,
       "artifactName": "Gyeokmulchiji-Mac-${arch}.${ext}"
     },
     "dmg": {
@@ -97,6 +95,7 @@
         "provider": "generic",
         "url": "https://draw.mathmckay.kr/download"
       }
-    ]
+    ],
+    "afterPack": "electron/after-pack.cjs"
   }
 }
