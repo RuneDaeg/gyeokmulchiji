@@ -81,7 +81,19 @@ async function checkContent() {
 ipcMain.handle('upd:check', () => { if (!checking) checking = checkContent().finally(() => { checking = null; }); return checking; });
 ipcMain.on('upd:booted', () => { const s = readState(); if (s.trying) { s.trying = ''; writeState(s); log('새 판 섬 ' + (current && current.ver)); } });
 ipcMain.on('upd:restart', () => { log('새 판으로 다시 켜기'); app.relaunch(); app.exit(0); });
-ipcMain.on('app:info', (e) => { e.returnValue = { shell: app.getVersion(), content: current ? current.ver : '' }; });
+ipcMain.on('app:info', (e) => { e.returnValue = { shell: app.getVersion(), content: current ? current.ver : '', platform: process.platform, portable: !!process.env.PORTABLE_EXECUTABLE_FILE }; });
+
+// 켤 때 껍데기가 스스로도 확인 (2026-11-10 사용자 "다시 시작할 때 업데이트 설치"): 그림 화면이 서지 못해도 새 판을 받아 두게
+// 사용법 칸의 "새 판 저절로 확인"을 끈 사람은 건너뛴다 (화면의 저장 칸을 읽는다)
+async function autoOn() {
+  try { return (await win.webContents.executeJavaScript("localStorage.getItem('jakdo:updateAuto')")) !== 'false'; } catch { return true; }
+}
+function startupCheck() {
+  setTimeout(async () => {
+    if (!win || win.isDestroyed() || !(await autoOn())) return;
+    if (!checking) checking = checkContent().finally(() => { checking = null; });
+  }, 15000);
+}
 
 // ── 껍데기 새 판: 설치판만, 뒤에서 받아 두고 닫을 때 설치 ──
 function shellUpdates() {
@@ -93,8 +105,13 @@ function shellUpdates() {
   autoUpdater.disableDifferentialDownload = true;
   autoUpdater.logger = null;
   autoUpdater.on('error', (e) => log('껍데기 새 판 확인 오류 ' + String((e && e.message) || e).split('\n')[0].slice(0, 150)));
-  autoUpdater.on('update-downloaded', (i) => log('껍데기 새 판 받아 둠 ' + i.version + ' (닫을 때 설치)'));
-  const go = () => autoUpdater.checkForUpdates().catch(() => {});
+  // 받아 두면 화면에 알린다 → [지금 설치하고 다시 켜기], 안 누르면 닫을 때 설치 (2026-11-10)
+  let ready = '';
+  const tell = () => { if (ready && win && !win.isDestroyed()) win.webContents.send('upd:shell', ready); };
+  autoUpdater.on('update-downloaded', (i) => { log('껍데기 새 판 받아 둠 ' + i.version + ' (닫을 때 설치)'); ready = i.version; tell(); });
+  win.webContents.on('did-finish-load', () => setTimeout(tell, 3000));
+  ipcMain.on('upd:install', () => { if (!ready) return; log('껍데기 새 판 지금 설치'); autoUpdater.quitAndInstall(true, true); });
+  const go = async () => { if (await autoOn()) autoUpdater.checkForUpdates().catch(() => {}); };
   setTimeout(go, 30000);
   setInterval(go, 6 * 3600 * 1000);
 }
@@ -167,6 +184,7 @@ app.whenReady().then(() => {
   protocol.handle('app', serve);
   createWindow();
   shellUpdates();
+  startupCheck();
 });
 app.on('window-all-closed', () => app.quit());
 log('켜짐');

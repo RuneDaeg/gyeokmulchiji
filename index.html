@@ -45,6 +45,15 @@ h2{font-size:21px;margin:8px 0 14px}
 .qr svg{width:100%;height:100%;display:block}
 .mine-tag{display:none;align-self:flex-start;font-size:12px;background:var(--acc);color:#fff;border-radius:99px;padding:0 8px}
 .card.mine .mine-tag{display:inline-block}
+.pop{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:rgba(10,16,32,.5);padding:16px}
+.pop[hidden]{display:none}
+.pop-box{width:min(480px,100%);max-height:calc(100vh - 32px);overflow:auto;background:var(--card);color:var(--ink);border-radius:16px;padding:20px 22px 16px;box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.pop-box h3{margin:0 0 8px;font-size:20px}
+.pop-box h3 small{font-weight:400;font-size:13px;color:var(--sub)}
+.pop-box ul{margin:0 0 16px 20px;padding:0;font-size:15px}
+.pop-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:14px}
+.pop-row a:first-child{margin-right:auto}
+.pop-row button.btn{font-family:inherit;background:var(--card);color:var(--ink);cursor:pointer}
 details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:10px 0}
 summary{cursor:pointer;font-weight:bold}
 .news li{margin:2px 0}
@@ -63,7 +72,7 @@ footer{color:var(--sub);font-size:13px;text-align:center;padding:20px 16px 40px;
 </section>
 
 <main>
-  <h2 id="get">앱으로 받기 <span class="note">지금 판 1.0.0 (2026-11-03)</span></h2>
+  <h2 id="get">앱으로 받기 <span class="note">지금 판 1.0.1 (2026-11-10)</span></h2>
   <div class="grid">
     <div class="card" data-os="win">
       <span class="mine-tag">이 컴퓨터</span>
@@ -79,7 +88,7 @@ footer{color:var(--sub);font-size:13px;text-align:center;padding:20px 16px 40px;
       <p class="what">내 맥의 칩에 맞는 것을 받아요. (애플 메뉴  → 이 Mac에 관하여 → 「칩」이 Apple M… 이면 애플 칩)</p>
       <a class="btn p" href="https://draw.mathmckay.kr/download/Gyeokmulchiji-Mac-arm64.zip">애플 칩(M1~) 맥 받기</a>
       <a class="btn" href="https://draw.mathmckay.kr/download/Gyeokmulchiji-Mac-x64.zip">인텔 맥 받기</a>
-      <p class="note">받은 zip 파일을 두 번 눌러 풀고, 나온 격물치지를 <b>응용 프로그램</b> 폴더로 끌어 넣어요. 처음 한 번은 아이콘을 <b>오른쪽 클릭 → 열기 → 열기</b>. 다음부터는 그냥 열려요.</p>
+      <p class="note">받은 zip 파일을 두 번 눌러 풀고, 나온 격물치지를 <b>응용 프로그램</b> 폴더로 끌어 넣어요. 처음 한 번은 아이콘을 <b>오른쪽 클릭 → 열기</b>. 그래도 막히면(macOS 15) <b>시스템 설정 → 개인정보 보호 및 보안</b> 맨 아래 <b>[그래도 열기]</b>. 다음부터는 그냥 열려요.</p>
     </div>
     <div class="card" data-os="android">
       <span class="mine-tag">이 기기</span>
@@ -99,8 +108,8 @@ footer{color:var(--sub);font-size:13px;text-align:center;padding:20px 16px 40px;
   </div>
 
   <details class="news" open>
-    <summary>1.0.0에서 바뀐 것</summary>
-    <ul><li>정식판 1.0 — 베타 표시를 걷고 판 번호를 달았어요</li><li>오류가 나도 멈추지 않고, 깨진 저장은 앞 판으로 되살려요</li><li>무엇이든 찾기(Ctrl+K): 그림 틀·보관함·학습지·수식·스튜디오·명령을 한 칸에서</li><li>따라하기 네 갈래: 기본·학습지·수식·스튜디오</li><li>단축키 한 장 표(?) — A4 한 장 인쇄</li><li>새 판이 나오면 알려 주고 받아요</li></ul>
+    <summary>1.0.1에서 바뀐 것</summary>
+    <ul><li>회전체 그림에 「1회전」 화살표 — 축을 감싸는 타원 화살표 부품 (가로·세로 축, 시계·반시계, 글자)</li><li>새 견본: y축 둘레 회전체, 중1 회전체 3종(직사각형→원기둥, 직각삼각형→원뿔, 반원→구)</li><li>새 판을 켤 때 확인해 받아 두고, 다시 켜면 설치돼요 (윈도우 프로그램도 받아 두면 알려 줘요)</li><li>맥·바로실행판은 프로그램 새 판이 나오면 [받기]로 알려 줘요</li><li>새 판으로 처음 켜면 「새 판 소식」 창으로 바뀐 것을 보여 줘요</li></ul>
   </details>
   <details>
     <summary>예전 주소(runedaeg.github.io)에서 그리던 그림 옮기기</summary>
@@ -116,7 +125,14 @@ footer{color:var(--sub);font-size:13px;text-align:center;padding:20px 16px 40px;
     <p>쓰시는 컴퓨터·휴대폰 안에만 저장돼요. 격물치지는 그림·학습지를 어디로도 보내지 않아요. 다른 기기로 옮길 때는 백업 파일을 쓰세요.</p>
   </details>
 </main>
-<footer><a href="/guide/">사용 설명서</a> · <a href="/guide/gyeokmulchiji-manual.pdf">PDF</a> · <a href="/updates.html">업데이트 정리</a><br>격물치지 1.0.0 · 무료 · 가입 없음 · 그림은 쓰는 기기에만 저장돼요</footer>
+<div id="newsPop" class="pop" role="dialog" aria-modal="true" aria-labelledby="newsTitle" hidden>
+  <div class="pop-box">
+    <h3 id="newsTitle">새 판 1.0.1 소식 <small>2026-11-10</small></h3>
+    <ul></ul>
+    <div class="pop-row"><a href="/updates.html">업데이트 정리 전체 보기</a><a class="btn p" href="/app/">그림판 열기</a><button type="button" class="btn ok">확인</button></div>
+  </div>
+</div>
+<footer><a href="/guide/">사용 설명서</a> · <a href="/guide/gyeokmulchiji-manual.pdf">PDF</a> · <a href="/updates.html">업데이트 정리</a><br>격물치지 1.0.1 · 무료 · 가입 없음 · 그림은 쓰는 기기에만 저장돼요</footer>
 <script>
 // 이 기기에 맞는 칸을 먼저 (윈도우·맥·안드로이드·아이폰)
 (function () {
@@ -133,6 +149,18 @@ footer{color:var(--sub);font-size:13px;text-align:center;padding:20px 16px 40px;
     });
   });
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(function () {});
+  // 새 판 소식 창 (2026-11-10 사용자 "업데이트 내용 정리해서 … 원래 사이트에 팝업으로"): 판마다 한 번
+  var seen = ''; try { seen = localStorage.getItem('jakdo:landNews') || ''; } catch (e) {}
+  var ul = document.querySelector('details.news ul');
+  if (seen !== '1.0.1' && ul && ul.children.length) {
+    var pop = document.getElementById('newsPop');
+    pop.querySelector('ul').innerHTML = ul.innerHTML;
+    var close = function () { pop.hidden = true; try { localStorage.setItem('jakdo:landNews', '1.0.1'); } catch (e) {} };
+    pop.querySelector('.ok').addEventListener('click', close);
+    pop.addEventListener('click', function (e) { if (e.target === pop) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) close(); });
+    pop.hidden = false; pop.querySelector('.ok').focus();
+  }
 })();
 </script>
 </body>

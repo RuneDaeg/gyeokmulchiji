@@ -1,8 +1,8 @@
-version: 1.0.0
+version: 1.0.1
 files:
   - url: Gyeokmulchiji-Setup.exe
-    sha512: Y/QWl+CdreBsw0nvDRnCDWFltvq4NtsG+3unaw2TvuGGQong8MHTG/fVCV4OkzC40MyiUW7zyPOqcF+9a8QgCA==
-    size: 86827413
+    sha512: lFK90igPDHCViuJX4lSlMp8OceDpF/+vdCkIBs1Z0UfXfuDsLMBpl119fir25c/kYSAm/NEhMVn90CtnIDgtxQ==
+    size: 79484648
 path: Gyeokmulchiji-Setup.exe
-sha512: Y/QWl+CdreBsw0nvDRnCDWFltvq4NtsG+3unaw2TvuGGQong8MHTG/fVCV4OkzC40MyiUW7zyPOqcF+9a8QgCA==
-releaseDate: '2026-11-04T16:53:37.208Z'
+sha512: lFK90igPDHCViuJX4lSlMp8OceDpF/+vdCkIBs1Z0UfXfuDsLMBpl119fir25c/kYSAm/NEhMVn90CtnIDgtxQ==
+releaseDate: '2026-11-10T14:34:01.260Z'
