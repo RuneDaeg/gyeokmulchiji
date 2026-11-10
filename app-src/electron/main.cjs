@@ -166,6 +166,11 @@ function createWindow() {
   win.webContents.on('render-process-gone', (e, d) => log('화면 멈춤 ' + JSON.stringify(d)));
   // 바깥 주소는 평소 브라우저로, 앱 안의 새 창(사용설명서 등)은 앱 창으로
   win.webContents.setWindowOpenHandler(({ url }) => {
+    // 앱에 담기지 않은 파일(맥 앱은 100MB 제한 때문에 사용 설명서를 뺀다, 2026-11-11)은 사이트의 것을 브라우저로
+    if (url.startsWith(ORIGIN)) {
+      const p = decodeURIComponent(new URL(url).pathname).replace(/^\/+/, '');
+      if (p && p !== 'index.html' && !fs.existsSync(path.join(BUNDLED, p))) { shell.openExternal(/사용설명서/.test(p) ? SITE + 'guide/' : SITE); return { action: 'deny' }; }
+    }
     if (url.startsWith(ORIGIN)) return { action: 'allow', overrideBrowserWindowOptions: { autoHideMenuBar: true, icon: path.join(__dirname, '..', 'build', 'icon.png') } };
     if (/^(https?|mailto):/.test(url)) shell.openExternal(url);
     return { action: 'deny' };
