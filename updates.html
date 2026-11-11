@@ -35,7 +35,7 @@ h2 small { font-weight: 400; color: var(--ink-2); font-size: 14px; margin-left: 
 .items li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
 .items li[hidden] { display: none; }
 .tag { grid-row: span 2; align-self: start; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; white-space: nowrap; color: #fff; }
-.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); } .tag.v6 { background: var(--b6); } .tag.v7 { background: var(--b7); } .tag.v8 { background: var(--b8); } .tag.v10 { background: #c8321f; } .tag.v101 { background: #2743c4; } .tag.v102 { background: #2f7d5b; }
+.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); } .tag.v6 { background: var(--b6); } .tag.v7 { background: var(--b7); } .tag.v8 { background: var(--b8); } .tag.v10 { background: #c8321f; } .tag.v101 { background: #2743c4; } .tag.v102 { background: #2f7d5b; } .tag.v103 { background: #b25d12; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tag { color: #111; } }
 .items b { font-size: 15.5px; }
 .items p { margin: 0; color: var(--ink-2); font-size: 14px; }
@@ -50,7 +50,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
 <div class="wrap">
   <header>
     <h1>격물치지 업데이트 정리</h1>
-    <p>베타테스트 1판(2026년 10월 14일)부터 1.0.2(11월 11일)까지 바뀐 점</p>
+    <p>베타테스트 1판(2026년 10월 14일)부터 1.0.3(11월 12일)까지 바뀐 점</p>
   </header>
 
   <section class="stats" aria-label="한눈에">
@@ -72,6 +72,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <li><strong>정식판 1.0</strong>11월 5일 · 새 주소 draw.mathmckay.kr, 윈도우·맥·안드로이드 앱, 새 판 저절로 받기</li>
     <li><strong>1.0.1</strong>11월 10일 · 회전체 1회전 화살표, 회전체 견본, 다시 켜면 새 판 설치·새 판 소식</li>
     <li><strong>1.0.2</strong>11월 11일 · 공통 › 기본 요소 84가지 (화살표·수학 표시·작도 도구·도형·자주 쓰는 꼴·작도 흔적)</li>
+    <li><strong>1.0.3</strong>11월 12일 · 회전체 만들기 애니메이션, 함수를 넣으면 회전체, 과목별 기본 요소 155가지</li>
   </ul>
 
   <nav class="filter" aria-label="판 고르기">
@@ -86,8 +87,16 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <button type="button" data-v="v10" aria-pressed="false">1.0에서</button>
     <button type="button" data-v="v101" aria-pressed="false">1.0.1에서</button>
     <button type="button" data-v="v102" aria-pressed="false">1.0.2에서</button>
+    <button type="button" data-v="v103" aria-pressed="false">1.0.3에서</button>
     <span class="count" id="count"></span>
   </nav>
+
+  <h2>1.0.3<small>11월 12일 · 회전체 만들기 · 과목별 기본 요소</small></h2>
+  <ul class="items">
+    <li data-v="v103"><span class="tag v103">1.0.3</span><b>회전체 만들기 애니메이션</b><p>평면도형이 축 둘레를 0°→360° 돌며 지나간 자리가 회전체가 되는 모습. 직사각형→원기둥, 직각삼각형→원뿔, 반원→구, 사다리꼴→원뿔대, y=√x를 x축 둘레로. 앞은 실선·뒤는 점선, 다 돌면 완성된 입체만 남아요. ▶ 재생·GIF·동영상으로 내보내기.</p><span class="how">입체도형·미적분 칸 → 애니메이션 묶음 → 회전체 만들기</span></li>
+    <li data-v="v103"><span class="tag v103">1.0.3</span><b>함수를 넣으면 회전체</b><p>속성 창에 함수 y = ○, 아래 함수(비우면 x축), 구간 a~b, x축·y축 둘레를 넣으면 그 영역을 돌린 회전체를 그려요. 두 곡선 사이(예: y=x와 y=x²)를 돌리면 가운데가 빈 회전체. 좌표축 눈금과 딱 맞아요.</p><span class="how">미적분 칸 → 애니메이션 → 함수를 넣어 회전체 만들기</span></li>
+    <li data-v="v103"><span class="tag v103">1.0.3</span><b>과목별 기본 요소 155가지</b><p>각 과목의 「공통」 칸 맨 위에 그 과목 작은 요소를 하나씩 넣는 묶음. 물리 47(힘 화살표·물체·용수철·도르래·회로 기호 15·자석·전하·렌즈·거울 등), 화학 24(기체 용기·입자·보어·루이스·분자 모형·pH 띠·전기 분해·실험 기구), 생명과학 21(염색체·뉴런·시냅스·면역 세포·DNA·가계도 기호), 지구과학 20(전선·일기 기호·화석·지층 범례·천체·고기압·저기압), 사회 15(범례·연표·이동 경로·자료 상자·사람·수요 공급), 국어·영어·제2외국어 28(말풍선·표지판·기호·글자 칸·달력·메뉴판·마인드맵).</p><span class="how">공통 칸 → 기본 요소 (과목 이름)</span></li>
+  </ul>
 
   <h2>1.0.2<small>11월 11일 · 공통 › 기본 요소</small></h2>
   <ul class="items">
