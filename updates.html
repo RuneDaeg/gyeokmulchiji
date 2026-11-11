@@ -35,7 +35,7 @@ h2 small { font-weight: 400; color: var(--ink-2); font-size: 14px; margin-left: 
 .items li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
 .items li[hidden] { display: none; }
 .tag { grid-row: span 2; align-self: start; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; white-space: nowrap; color: #fff; }
-.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); } .tag.v6 { background: var(--b6); } .tag.v7 { background: var(--b7); } .tag.v8 { background: var(--b8); } .tag.v10 { background: #c8321f; } .tag.v101 { background: #2743c4; }
+.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); } .tag.v6 { background: var(--b6); } .tag.v7 { background: var(--b7); } .tag.v8 { background: var(--b8); } .tag.v10 { background: #c8321f; } .tag.v101 { background: #2743c4; } .tag.v102 { background: #2f7d5b; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tag { color: #111; } }
 .items b { font-size: 15.5px; }
 .items p { margin: 0; color: var(--ink-2); font-size: 14px; }
@@ -50,7 +50,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
 <div class="wrap">
   <header>
     <h1>격물치지 업데이트 정리</h1>
-    <p>베타테스트 1판(2026년 10월 14일)부터 1.0.1(11월 10일)까지 바뀐 점</p>
+    <p>베타테스트 1판(2026년 10월 14일)부터 1.0.2(11월 11일)까지 바뀐 점</p>
   </header>
 
   <section class="stats" aria-label="한눈에">
@@ -71,6 +71,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <li><strong>베타 8</strong>10월 28일 · 한글 수식 글꼴을 한글 수식 편집기 모양 그대로</li>
     <li><strong>정식판 1.0</strong>11월 5일 · 새 주소 draw.mathmckay.kr, 윈도우·맥·안드로이드 앱, 새 판 저절로 받기</li>
     <li><strong>1.0.1</strong>11월 10일 · 회전체 1회전 화살표, 회전체 견본, 다시 켜면 새 판 설치·새 판 소식</li>
+    <li><strong>1.0.2</strong>11월 11일 · 공통 › 기본 요소 84가지 (화살표·수학 표시·작도 도구·도형·자주 쓰는 꼴·작도 흔적)</li>
   </ul>
 
   <nav class="filter" aria-label="판 고르기">
@@ -84,8 +85,20 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <button type="button" data-v="v8" aria-pressed="false">베타 8에서</button>
     <button type="button" data-v="v10" aria-pressed="false">1.0에서</button>
     <button type="button" data-v="v101" aria-pressed="false">1.0.1에서</button>
+    <button type="button" data-v="v102" aria-pressed="false">1.0.2에서</button>
     <span class="count" id="count"></span>
   </nav>
+
+  <h2>1.0.2<small>11월 11일 · 공통 › 기본 요소</small></h2>
+  <ul class="items">
+    <li data-v="v102"><span class="tag v102">1.0.2</span><b>기본 요소 84가지 — 눌러서 하나만 넣기</b><p>그림판 왼쪽 「공통 (모든 과목)」 칸 맨 위에 여섯 묶음. 누르면 지금 그림 위에 그것만 더해지고, 고르면 손잡이로 끌어 고쳐요.</p><span class="how">공통 칸 → 기본 요소 (화살표 · 수학 표시 · 작도 도구 · 도형·무늬·분수 · 자주 쓰는 꼴 · 작도 흔적)</span></li>
+    <li data-v="v102"><span class="tag v102">1.0.2</span><b>화살표 9가지</b><p>회전 화살표(가로·세로·「1회전」), 동그란 화살표 ↻ ↺, 굽은·양쪽 굽은 화살표, 직선·양쪽 화살표. 회전 화살표는 테두리·축 끝·양 끝 손잡이로 크기·기울기·납작함·도는 각을 끌어 고쳐요. 굵은 선에서도 촉이 곡선 끝에 딱 붙고, 촉 모양(채움·열림)과 크기를 골라요.</p></li>
+    <li data-v="v102"><span class="tag v102">1.0.2</span><b>수학 표시 31가지</b><p>각(1·2·3겹)·직각, 길이(중괄호·치수선·휜 점선), 같은 길이 |·||, 평행 >·>>, 점 ●·○, 원과 중심·반지름, 보조선, 수선의 발, 수직선·구간·부등식의 해, 대칭축, 점근선, 좌표 점과 점선, 호와 중심각, 부채꼴, 접선, 중점, 벡터, 주사위·동전·카드·주머니.</p></li>
+    <li data-v="v102"><span class="tag v102">1.0.2</span><b>작도 도구 9가지</b><p>컴퍼스(연필 끝을 끌어 벌리기·돌리기, 그린 호), 눈금 없는 자, 눈금자, 각도기, 삼각자 45°·30°/60°, 물결선·지그재그 생략 표시(축 위에 놓으면 그 자리를 지우고 그려요).</p></li>
+    <li data-v="v102"><span class="tag v102">1.0.2</span><b>도형 · 무늬 · 분수 모형 13가지</b><p>정삼각형~정팔각형, 영역 무늬(사선·격자·점·회색), 분수 모형(막대·원, 칸 수·색칠 수), 쌓기나무 한 개.</p></li>
+    <li data-v="v102"><span class="tag v102">1.0.2</span><b>자주 쓰는 꼴 19가지</b><p>평행선과 엇각·동위각, 삼각형의 높이, 내접원·외접원, 원주각과 중심각, 피타고라스, 삼각비, 기울기 삼각형, 단위원, 사분면, 격자점, 원뿔·원기둥 전개도, 넓이 모형 (a+b)², 윗접시 저울, 시계, 수형도, 바둑돌.</p></li>
+    <li data-v="v102"><span class="tag v102">1.0.2</span><b>작도 흔적 3가지 (단계별 재생)</b><p>수직이등분선 · 각의 이등분선 · 크기가 같은 각 옮기기. 재생하면 컴퍼스 호 자국이 순서대로 나타나요.</p></li>
+  </ul>
 
   <h2>1.0.1<small>11월 10일 · 1.0 다음에 더한 것</small></h2>
   <ul class="items">
