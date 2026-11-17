@@ -35,7 +35,7 @@ h2 small { font-weight: 400; color: var(--ink-2); font-size: 14px; margin-left: 
 .items li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
 .items li[hidden] { display: none; }
 .tag { grid-row: span 2; align-self: start; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; white-space: nowrap; color: #fff; }
-.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); } .tag.v6 { background: var(--b6); } .tag.v7 { background: var(--b7); } .tag.v8 { background: var(--b8); } .tag.v10 { background: #c8321f; } .tag.v101 { background: #2743c4; } .tag.v102 { background: #2f7d5b; } .tag.v103 { background: #b25d12; } .tag.v104 { background: #8a2fb5; }
+.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); } .tag.v6 { background: var(--b6); } .tag.v7 { background: var(--b7); } .tag.v8 { background: var(--b8); } .tag.v10 { background: #c8321f; } .tag.v101 { background: #2743c4; } .tag.v102 { background: #2f7d5b; } .tag.v103 { background: #b25d12; } .tag.v104 { background: #8a2fb5; } .tag.v105 { background: #0f7c8c; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tag { color: #111; } }
 .items b { font-size: 15.5px; }
 .items p { margin: 0; color: var(--ink-2); font-size: 14px; }
@@ -50,7 +50,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
 <div class="wrap">
   <header>
     <h1>격물치지 업데이트 정리</h1>
-    <p>베타테스트 1판(2026년 10월 14일)부터 1.0.4(11월 12일)까지 바뀐 점</p>
+    <p>베타테스트 1판(2026년 10월 14일)부터 1.0.5(11월 17일)까지 바뀐 점</p>
   </header>
 
   <section class="stats" aria-label="한눈에">
@@ -74,6 +74,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <li><strong>1.0.2</strong>11월 11일 · 공통 › 기본 요소 84가지 (화살표·수학 표시·작도 도구·도형·자주 쓰는 꼴·작도 흔적)</li>
     <li><strong>1.0.3</strong>11월 12일 · 회전체 만들기 애니메이션, 함수를 넣으면 회전체, 과목별 기본 요소 155가지</li>
     <li><strong>1.0.4</strong>11월 12일 · 과목별 새 요소 106가지 (세포·별자리·유물·지도 기호·실험 기구·교정 부호)</li>
+    <li><strong>1.0.5</strong>11월 17일 · 과목별 새 요소 64가지 (측정 기구·기관 그림·등치선도·시차 지도·발음 기관)</li>
   </ul>
 
   <nav class="filter" aria-label="판 고르기">
@@ -90,8 +91,17 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <button type="button" data-v="v102" aria-pressed="false">1.0.2에서</button>
     <button type="button" data-v="v103" aria-pressed="false">1.0.3에서</button>
     <button type="button" data-v="v104" aria-pressed="false">1.0.4에서</button>
+    <button type="button" data-v="v105" aria-pressed="false">1.0.5에서</button>
     <span class="count" id="count"></span>
   </nav>
+
+  <h2>1.0.5<small>11월 17일 · 과목별 새 요소 64가지</small></h2>
+  <ul class="items">
+    <li data-v="v105"><span class="tag v105">1.0.5</span><b>물리 18 — 측정 기구</b><p>초시계(바늘·디지털)·용수철저울·전자저울·검전기·오실로스코프 화면(사인·사각·식)·멀티미터·레이저·소리굽쇠·진자(추를 끌어 각도)·파면(평면·구면)·물결파(간섭)·기록 타이머 종이테이프.</p><span class="how">과목 고르기 → 공통 칸 → 기본 요소 (과목)</span></li>
+    <li data-v="v105"><span class="tag v105">1.0.5</span><b>생명과학 18 — 기관 그림 · 현미경</b><p>심장·콩팥·네프론·소화 기관·폐와 폐포·눈·귀·뇌·잎 단면·기공(열림·닫힘)·뿌리 끝·꽃·광학 현미경, A·B·C 문제용 5개.</p><span class="how">과목 고르기 → 공통 칸 → 기본 요소 (과목)</span></li>
+    <li data-v="v105"><span class="tag v105">1.0.5</span><b>지리 14 — 지도 형식</b><p>등온선·등압선(고·저)·등고선과 단면도·단계 구분(색·회색·흑백 무늬), 유선도(인구 이동·무역), 시차 지도(도시 현지 시각 자동 계산)·날짜 변경선, 도형 표현도.</p><span class="how">과목 고르기 → 공통 칸 → 기본 요소 (과목)</span></li>
+    <li data-v="v105"><span class="tag v105">1.0.5</span><b>국어 14 — 발음 기관 · 마인드맵</b><p>발음 기관 단면(이름·A~G 문제용), 조음 위치 5종, 공기 흐름(코·입), 자음 체계표(채움·빈칸), 마인드맵 방사형·나무형·생선뼈(영어·제2외국어도).</p><span class="how">과목 고르기 → 공통 칸 → 기본 요소 (과목)</span></li>
+  </ul>
 
   <h2>1.0.4<small>11월 12일 · 과목별 새 요소 106가지</small></h2>
   <ul class="items">
