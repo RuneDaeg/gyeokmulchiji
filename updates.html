@@ -35,7 +35,7 @@ h2 small { font-weight: 400; color: var(--ink-2); font-size: 14px; margin-left: 
 .items li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
 .items li[hidden] { display: none; }
 .tag { grid-row: span 2; align-self: start; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; white-space: nowrap; color: #fff; }
-.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); } .tag.v6 { background: var(--b6); } .tag.v7 { background: var(--b7); } .tag.v8 { background: var(--b8); } .tag.v10 { background: #c8321f; } .tag.v101 { background: #2743c4; } .tag.v102 { background: #2f7d5b; } .tag.v103 { background: #b25d12; } .tag.v104 { background: #8a2fb5; } .tag.v105 { background: #0f7c8c; }
+.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); } .tag.v6 { background: var(--b6); } .tag.v7 { background: var(--b7); } .tag.v8 { background: var(--b8); } .tag.v10 { background: #c8321f; } .tag.v101 { background: #2743c4; } .tag.v102 { background: #2f7d5b; } .tag.v103 { background: #b25d12; } .tag.v104 { background: #8a2fb5; } .tag.v105 { background: #0f7c8c; } .tag.v106 { background: #6b5a00; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tag { color: #111; } }
 .items b { font-size: 15.5px; }
 .items p { margin: 0; color: var(--ink-2); font-size: 14px; }
@@ -50,7 +50,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
 <div class="wrap">
   <header>
     <h1>격물치지 업데이트 정리</h1>
-    <p>베타테스트 1판(2026년 10월 14일)부터 1.0.5(11월 17일)까지 바뀐 점</p>
+    <p>베타테스트 1판(2026년 10월 14일)부터 1.0.6(11월 18일)까지 바뀐 점</p>
   </header>
 
   <section class="stats" aria-label="한눈에">
@@ -75,6 +75,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <li><strong>1.0.3</strong>11월 12일 · 회전체 만들기 애니메이션, 함수를 넣으면 회전체, 과목별 기본 요소 155가지</li>
     <li><strong>1.0.4</strong>11월 12일 · 과목별 새 요소 106가지 (세포·별자리·유물·지도 기호·실험 기구·교정 부호)</li>
     <li><strong>1.0.5</strong>11월 17일 · 과목별 새 요소 64가지 (측정 기구·기관 그림·등치선도·시차 지도·발음 기관)</li>
+    <li><strong>1.0.6</strong>11월 18일 · 켜자마자 새 판 확인·저절로 설치, 앱 안에서 이번 판 소식</li>
   </ul>
 
   <nav class="filter" aria-label="판 고르기">
@@ -92,8 +93,15 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <button type="button" data-v="v103" aria-pressed="false">1.0.3에서</button>
     <button type="button" data-v="v104" aria-pressed="false">1.0.4에서</button>
     <button type="button" data-v="v105" aria-pressed="false">1.0.5에서</button>
+    <button type="button" data-v="v106" aria-pressed="false">1.0.6에서</button>
     <span class="count" id="count"></span>
   </nav>
+
+  <h2>1.0.6<small>11월 18일 · 저절로 설치</small></h2>
+  <ul class="items">
+    <li data-v="v106"><span class="tag v106">1.0.6</span><b>켜자마자 새 판으로</b><p>웹·윈도우·맥 앱을 켜면 바로 새 판을 확인해요. 아직 아무것도 하지 않았으면 곧바로 새 판으로 바꾸고(웹은 다시 읽기, 앱은 다시 켜기), 이미 그리던 중이면 띠로 알려 주고 다음에 켤 때 설치돼요. 그림은 그대로예요.</p></li>
+    <li data-v="v106"><span class="tag v106">1.0.6</span><b>이번 판에서 바뀐 것</b><p>새 판으로 켜지면 바뀐 것을 작은 창으로 한 번 보여 주고, 사용법 칸 [이번 판에서 바뀐 것]으로 언제든 다시 볼 수 있어요.</p><span class="how">왼쪽 사용법 칸 → 판 번호 옆</span></li>
+  </ul>
 
   <h2>1.0.5<small>11월 17일 · 과목별 새 요소 64가지</small></h2>
   <ul class="items">

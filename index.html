@@ -72,7 +72,7 @@ footer{color:var(--sub);font-size:13px;text-align:center;padding:20px 16px 40px;
 </section>
 
 <main>
-  <h2 id="get">앱으로 받기 <span class="note">지금 판 1.0.5 (2026-11-17)</span></h2>
+  <h2 id="get">앱으로 받기 <span class="note">지금 판 1.0.6 (2026-11-18)</span></h2>
   <div class="grid">
     <div class="card" data-os="win">
       <span class="mine-tag">이 컴퓨터</span>
@@ -108,8 +108,8 @@ footer{color:var(--sub);font-size:13px;text-align:center;padding:20px 16px 40px;
   </div>
 
   <details class="news" open>
-    <summary>1.0.5에서 바뀐 것</summary>
-    <ul><li>과목별 새 요소 64가지 — 각 과목 「공통 › 기본 요소」에 하나씩 넣기</li><li>물리: 초시계·용수철저울·전자저울·검전기·오실로스코프·멀티미터·소리굽쇠·진자·파면·물결파·종이테이프</li><li>생명과학: 심장·콩팥·네프론·소화 기관·폐·눈·귀·뇌·잎·기공·뿌리·꽃·현미경 (A·B·C 문제용)</li><li>지리: 등온선·등압선·등고선 단면, 유선도, 시차 지도·날짜 변경선, 도형 표현도</li><li>국어: 발음 기관 단면·조음 위치, 자음 체계표, 마인드맵 3종</li></ul>
+    <summary>1.0.6에서 바뀐 것</summary>
+    <ul><li>켜자마자 새 판을 확인하고, 아직 아무것도 하지 않았으면 바로 새 판으로 바꿔요 (웹은 다시 읽기, 앱은 다시 켜기)</li><li>이미 그리던 중이면 띠로 알려 주고, 다시 켜면 설치돼요</li><li>사용법 칸 [이번 판에서 바뀐 것] — 지금 판의 소식을 언제든 다시 보기</li></ul>
   </details>
   <details>
     <summary>예전 주소(runedaeg.github.io)에서 그리던 그림 옮기기</summary>
@@ -127,12 +127,12 @@ footer{color:var(--sub);font-size:13px;text-align:center;padding:20px 16px 40px;
 </main>
 <div id="newsPop" class="pop" role="dialog" aria-modal="true" aria-labelledby="newsTitle" hidden>
   <div class="pop-box">
-    <h3 id="newsTitle">새 판 1.0.5 소식 <small>2026-11-17</small></h3>
+    <h3 id="newsTitle">새 판 1.0.6 소식 <small>2026-11-18</small></h3>
     <ul></ul>
     <div class="pop-row"><a href="/updates.html">업데이트 정리 전체 보기</a><a class="btn p" href="/app/">그림판 열기</a><button type="button" class="btn ok">확인</button></div>
   </div>
 </div>
-<footer><a href="/guide/">사용 설명서</a> · <a href="/guide/gyeokmulchiji-manual.pdf">PDF</a> · <a href="/updates.html">업데이트 정리</a><br>격물치지 1.0.5 · 무료 · 가입 없음 · 그림은 쓰는 기기에만 저장돼요</footer>
+<footer><a href="/guide/">사용 설명서</a> · <a href="/guide/gyeokmulchiji-manual.pdf">PDF</a> · <a href="/updates.html">업데이트 정리</a><br>격물치지 1.0.6 · 무료 · 가입 없음 · 그림은 쓰는 기기에만 저장돼요</footer>
 <script>
 // 이 기기에 맞는 칸을 먼저 (윈도우·맥·안드로이드·아이폰)
 (function () {
@@ -152,10 +152,10 @@ footer{color:var(--sub);font-size:13px;text-align:center;padding:20px 16px 40px;
   // 새 판 소식 창 (2026-11-10 사용자 "업데이트 내용 정리해서 … 원래 사이트에 팝업으로"): 판마다 한 번
   var seen = ''; try { seen = localStorage.getItem('jakdo:landNews') || ''; } catch (e) {}
   var ul = document.querySelector('details.news ul');
-  if (seen !== '1.0.5' && ul && ul.children.length) {
+  if (seen !== '1.0.6' && ul && ul.children.length) {
     var pop = document.getElementById('newsPop');
     pop.querySelector('ul').innerHTML = ul.innerHTML;
-    var close = function () { pop.hidden = true; try { localStorage.setItem('jakdo:landNews', '1.0.5'); } catch (e) {} };
+    var close = function () { pop.hidden = true; try { localStorage.setItem('jakdo:landNews', '1.0.6'); } catch (e) {} };
     pop.querySelector('.ok').addEventListener('click', close);
     pop.addEventListener('click', function (e) { if (e.target === pop) close(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pop.hidden) close(); });
