@@ -35,7 +35,7 @@ h2 small { font-weight: 400; color: var(--ink-2); font-size: 14px; margin-left: 
 .items li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; }
 .items li[hidden] { display: none; }
 .tag { grid-row: span 2; align-self: start; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 6px; white-space: nowrap; color: #fff; }
-.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); } .tag.v6 { background: var(--b6); } .tag.v7 { background: var(--b7); } .tag.v8 { background: var(--b8); } .tag.v10 { background: #c8321f; } .tag.v101 { background: #2743c4; } .tag.v102 { background: #2f7d5b; } .tag.v103 { background: #b25d12; } .tag.v104 { background: #8a2fb5; } .tag.v105 { background: #0f7c8c; } .tag.v106 { background: #6b5a00; }
+.tag.v2 { background: var(--b2); } .tag.v3 { background: var(--b3); } .tag.v4 { background: var(--b4); } .tag.v5 { background: var(--b5); } .tag.v6 { background: var(--b6); } .tag.v7 { background: var(--b7); } .tag.v8 { background: var(--b8); } .tag.v10 { background: #c8321f; } .tag.v101 { background: #2743c4; } .tag.v102 { background: #2f7d5b; } .tag.v103 { background: #b25d12; } .tag.v104 { background: #8a2fb5; } .tag.v105 { background: #0f7c8c; } .tag.v106 { background: #6b5a00; } .tag.v107 { background: #3a5f1a; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tag { color: #111; } }
 .items b { font-size: 15.5px; }
 .items p { margin: 0; color: var(--ink-2); font-size: 14px; }
@@ -50,7 +50,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
 <div class="wrap">
   <header>
     <h1>격물치지 업데이트 정리</h1>
-    <p>베타테스트 1판(2026년 10월 14일)부터 1.0.6(11월 18일)까지 바뀐 점</p>
+    <p>베타테스트 1판(2026년 10월 14일)부터 1.0.7(11월 18일)까지 바뀐 점</p>
   </header>
 
   <section class="stats" aria-label="한눈에">
@@ -76,6 +76,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <li><strong>1.0.4</strong>11월 12일 · 과목별 새 요소 106가지 (세포·별자리·유물·지도 기호·실험 기구·교정 부호)</li>
     <li><strong>1.0.5</strong>11월 17일 · 과목별 새 요소 64가지 (측정 기구·기관 그림·등치선도·시차 지도·발음 기관)</li>
     <li><strong>1.0.6</strong>11월 18일 · 켜자마자 새 판 확인·저절로 설치, 앱 안에서 이번 판 소식</li>
+    <li><strong>1.0.7</strong>11월 18일 · 알림 창 「새로 생긴 기본 요소」 (하루 동안·다시 보지 않기)</li>
   </ul>
 
   <nav class="filter" aria-label="판 고르기">
@@ -94,8 +95,14 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <button type="button" data-v="v104" aria-pressed="false">1.0.4에서</button>
     <button type="button" data-v="v105" aria-pressed="false">1.0.5에서</button>
     <button type="button" data-v="v106" aria-pressed="false">1.0.6에서</button>
+    <button type="button" data-v="v107" aria-pressed="false">1.0.7에서</button>
     <span class="count" id="count"></span>
   </nav>
+
+  <h2>1.0.7<small>11월 18일 · 알림 창</small></h2>
+  <ul class="items">
+    <li data-v="v107"><span class="tag v107">1.0.7</span><b>알림 창 — 새로 생긴 「기본 요소」</b><p>켜면 「기본 요소」가 어디에 있는지(왼쪽 「공통」 → 맨 위)와 과목별로 무엇이 있는지 알려 줘요. [「공통」 칸 열어 보기]로 바로 열고, [하루 동안 보지 않기] · [다시 보지 않기]를 고를 수 있어요.</p></li>
+  </ul>
 
   <h2>1.0.6<small>11월 18일 · 저절로 설치</small></h2>
   <ul class="items">
